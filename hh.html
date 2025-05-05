@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Video Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        .message {
+            max-width: 800px;
+            margin: 30px auto 10px;
+            padding: 0 20px;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #f0e68c;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #000;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .control-btn {
+            background-color: #444;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 0 10px;
+            border-radius: 5px;
+        }
+
+        .control-btn:hover {
+            background-color: #555;
+        }
+
+        .mute-btn {
+            background-color: #d9534f;
+        }
+
+        .mute-btn:hover {
+            background-color: #c9302c;
+        }
+
+        .volume-range {
+            width: 150px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Happy Birthday!</h1>
+
+    <div class="message">
+        Hello Neha! This is a song sung by me. There might be some mismatch in the lyrics and a bit of background noise, but please see my effort. I’ve been working on this for the past 7 days. If you notice any mismatches, just ignore them 😊. This is a surprise for my pookie from the *weweeee*. <br><br>
+        **Love you Neha ❤️ — Thanks!**
+    </div>
+
+    <div class="video-container">
+        <video id="birthdayVideo" controls autoplay>
+            <source src="./b.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="controls">
+        <button class="control-btn" id="playPauseBtn">Pause</button>
+        <button class="control-btn mute-btn" id="muteBtn">Mute</button>
+        <input type="range" id="volumeControl" class="volume-range" value="100" max="100" />
+    </div>
+
+    <script>
+        const video = document.getElementById('birthdayVideo');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const muteBtn = document.getElementById('muteBtn');
+        const volumeControl = document.getElementById('volumeControl');
+
+        // Play/Pause button functionality
+        playPauseBtn.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+                playPauseBtn.textContent = 'Pause';
+            } else {
+                video.pause();
+                playPauseBtn.textContent = 'Play';
+            }
+        });
+
+        // Mute/Unmute button functionality
+        muteBtn.addEventListener('click', () => {
+            if (video.muted) {
+                video.muted = false;
+                muteBtn.textContent = 'Mute';
+            } else {
+                video.muted = true;
+                muteBtn.textContent = 'Unmute';
+            }
+        });
+
+        // Volume control functionality
+        volumeControl.addEventListener('input', () => {
+            video.volume = volumeControl.value / 100;
+        });
+    </script>
+
+</body>
+</html>
